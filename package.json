@@ -4,7 +4,9 @@
   "version": "1.0.0",
   "description": "Сайт семьи Каюмовых для поиска аренды жилья в Испании",
   "scripts": {
+    "predev": "cp \"Familia Kaiumov.html\" index.html",
     "dev": "vite",
+    "prebuild": "cp \"Familia Kaiumov.html\" index.html",
     "build": "vite build",
     "preview": "vite preview"
   },

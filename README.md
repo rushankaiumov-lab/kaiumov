@@ -2,6 +2,8 @@
 
 Статический сайт (HTML + Vite). Публикация на **GitHub Pages** через Actions.
 
+**Редактируйте страницу в файле `Familia Kaiumov.html`.** Перед `dev` и `build` скрипт копирует его в `index.html` (файл `index.html` в репозиторий не коммитится — он только для Vite).
+
 ## Локально
 
 ```bash
