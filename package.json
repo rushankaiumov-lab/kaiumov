@@ -1,0 +1,14 @@
+{
+  "name": "kaiumov-rent-spain",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Сайт семьи Каюмовых для поиска аренды жилья в Испании",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^6.3.5"
+  }
+}
