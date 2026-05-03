@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Familia Kaiumov · Sus futuros inquilinos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<style>
+  :root{
+    --bg: #F5EFE7;
+    --bg-2: #EFE7DC;
+    --ink: #1F1B17;
+    --ink-soft: #4B4339;
+    --muted: #8A7F71;
+    --line: #E2D7C7;
+    --accent: #B85C38;
+    --accent-soft: #D89A7A;
+    --card: #FBF7F0;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection{ background: var(--accent); color:#fff; }
+
+  h1,h2,h3{ font-family:Georgia, 'Times New Roman', serif; font-weight:400; letter-spacing:-0.015em; margin:0; }
+  h1{ font-size: clamp(32px, 3.6vw, 48px); line-height: 1.1; }
+  h2{ font-size: clamp(28px, 3vw, 40px); line-height: 1.15; }
+  h3{ font-size: 20px; }
+  p{ margin:0 0 1.1em 0; color: var(--ink-soft); text-wrap: pretty; }
+  p:last-child{ margin:0; }
+  em{ font-style: normal; color: var(--accent); font-family: inherit; }
+  strong{ color: var(--ink); font-weight: 500; }
+
+  .wrap{ max-width: 920px; margin: 0 auto; padding: 0 28px; }
+  .narrow{ max-width: 680px; margin: 0 auto; padding: 0 28px; }
+
+  .top{
+    display:flex; justify-content:space-between; align-items:center;
+    padding: 24px 32px;
+    font-size: 12px; color: var(--muted);
+    letter-spacing: .04em; text-transform: uppercase;
+  }
+  .mark{ display:flex; align-items:center; gap:10px; color: var(--ink); }
+  .dot{ width:8px; height:8px; border-radius:50%; background:var(--accent); }
+
+  /* HERO */
+  .hero{ padding: 32px 0 80px; }
+  .hero .grid{
+    display:grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items:center;
+  }
+  .eyebrow{
+    font-size: 12px; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--accent); font-weight: 500; margin-bottom: 24px;
+  }
+  .hero h1 .it{ color: var(--accent); }
+  .hero .lede{
+    font-family:Georgia, 'Times New Roman', serif;
+    font-size: clamp(18px, 1.55vw, 21px);
+    line-height: 1.55; color: var(--ink-soft);
+    margin: 24px 0 32px; max-width: 38ch;
+  }
+  .hero-photo{
+    aspect-ratio: 4/5; border-radius: 22px; overflow:hidden;
+    background: var(--bg-2);
+  }
+  .hero-photo img{ width:100%; height:100%; object-fit:cover; object-position: 50% 18%; display:block; }
+
+  .cta-row{ display:flex; flex-direction: column; gap: 12px; align-items: stretch; max-width: 280px; }
+  .btn{
+    display:inline-flex; align-items:center; justify-content: center; gap:10px;
+    padding: 14px 22px; border-radius: 999px;
+    font-size: 14px; font-weight: 500;
+    text-decoration:none; line-height:1;
+    transition: transform .25s ease, background .25s ease, box-shadow .25s ease;
+  }
+  .btn.primary{ background: var(--accent); color:#fff; box-shadow: 0 12px 28px -16px rgba(184,92,56,.6); }
+  .btn.primary:hover{ background:#A04E2D; transform: translateY(-1px); }
+  .btn.primary svg{ transition: transform .25s ease; }
+  .btn.primary:hover svg{ transform: translateX(3px); }
+  .btn.ghost{ background: #FFFFFF; color: var(--ink); border: none; box-shadow: 0 6px 18px -10px rgba(40,25,15,.18); }
+  .btn.ghost:hover{ transform: translateY(-1px); box-shadow: 0 12px 24px -12px rgba(40,25,15,.22); }
+
+  /* TEXT BLOCK */
+  .text-block{ padding-top: 20px; padding-bottom: 30px; }
+  .text-block p{ font-size: 17.5px; line-height: 1.75; }
+
+  /* HIGHLIGHT — для важных моментов поверх длинного текста */
+  .highlight{
+    margin: 36px 0;
+    background: var(--card);
+    border: none;
+    border-radius: 22px;
+    padding: 32px 36px;
+  }
+  .highlight .h-eye{
+    font-size: 11px; letter-spacing: .26em; text-transform: uppercase;
+    color: var(--accent); font-weight: 500;
+    display:flex; align-items:center; gap: 12px; margin-bottom: 14px;
+  }
+  .highlight .h-eye::before{ content:""; width:24px; height:1px; background: var(--accent); }
+  .highlight h3{ font-family:Georgia, 'Times New Roman', serif; font-size: 24px; margin-bottom: 28px; line-height: 1.2; }
+
+  /* FAMILY GRID inside highlight */
+  .members-mini{
+    display:grid; grid-template-columns: repeat(2, 1fr); gap: 18px 24px;
+    margin-top: 16px;
+  }
+  .mm{ display:flex; gap: 14px; align-items: flex-start; }
+  .mm .av{
+    flex:0 0 36px; height: 36px; border-radius: 50%;
+    background: var(--bg-2); border: none;
+    display:flex; align-items:center; justify-content:center;
+    color: var(--accent); font-family:Georgia, 'Times New Roman', serif; font-size: 14px;
+  }
+  .mm .name{ font-family:Georgia, 'Times New Roman', serif; color: var(--ink); font-size: 16.5px; line-height: 1.25; }
+  .mm .role{ font-size: 13px; color: var(--muted); margin-top: 2px; line-height:1.4; }
+
+  /* FINANCE figures */
+  .figs{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 4px; }
+  .fig .fl{ font-size: 11px; letter-spacing:.22em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+  .fig .fv{ font-family:Georgia, 'Times New Roman', serif; font-size: 26px; color: var(--ink); line-height: 1.05; letter-spacing: -.02em; }
+  .fig .fs{ font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+  /* DOCS list */
+  .docs-mini{
+    display:grid; grid-template-columns: 1fr 1fr; gap: 0;
+    margin-top: 6px;
+  }
+  .docs-mini .d{
+    display:flex; gap: 12px; padding: 12px 0;
+    border-top: 1px solid var(--line);
+    align-items: baseline;
+  }
+  .docs-mini .d:nth-child(1), .docs-mini .d:nth-child(2){ border-top: none; }
+  .docs-mini .d:nth-child(even){ padding-left: 20px; border-left: 1px solid var(--line); }
+  .docs-mini .d:nth-child(odd){ padding-right: 20px; }
+  .docs-mini .n{ font-family:Georgia, 'Times New Roman', serif; color: var(--accent); font-size: 13px; min-width: 22px; }
+  .docs-mini .t{ font-size: 14px; color: var(--ink-soft); line-height: 1.45; }
+
+  /* INLINE PHOTO between paragraphs */
+  .inline-photo{
+    margin: 40px 0;
+    border-radius: 22px; overflow:hidden;
+    background: var(--bg-2);
+  }
+
+  /* TEXT + PHOTO two-column */
+  .text-photo{
+    display: grid;
+    grid-template-columns: 1.7fr 1fr;
+    gap: 40px;
+    align-items: start;
+    margin: 40px 0;
+  }
+  .text-photo--reverse{ grid-template-columns: 1fr 1.7fr; }
+  .text-photo--reverse .text-photo__text{ order: 2; }
+  .text-photo--reverse .text-photo__photo{ order: 1; }
+  .text-photo__text p{ margin: 0; }
+  .text-photo__photo{
+    margin: 0;
+  }
+  .text-photo__photo img{ width: 100%; height: auto; display: block; }
+  .inline-photo img{ width:100%; height:auto; display:block; }
+  .inline-photo.tall{ aspect-ratio: 5/3.4; }
+  .inline-photo.tall img{ width:100%; height:100%; object-fit:cover; object-position: 50% 22%; }
+  .inline-photo .cap{
+    padding: 12px 20px; font-size: 12.5px; color: var(--muted);
+    background: var(--card); border-top: none;
+    letter-spacing: .04em;
+  }
+
+  /* SIGNATURE */
+  .sig{
+    font-family:Georgia, 'Times New Roman', serif; font-style: normal;
+    font-size: 21px; color: var(--ink); line-height: 1.4;
+    margin-top: 48px; padding-top: 32px;
+    border-top: 1px solid var(--line);
+  }
+
+  /* DOCS + CTA combined */
+  .docs-cta__btn{
+    margin-top: 22px;
+  }
+
+  /* CONTACT FINAL — тёмный финальный блок */
+  .contact-final{
+    position: relative;
+    margin-top: 64px;
+    background: var(--ink);
+    color: #F5EFE7;
+    border-radius: 22px;
+    padding: 48px 44px 44px;
+    overflow: hidden;
+  }
+  .contact-final::before{
+    content: "";
+    position: absolute;
+    top: -20%;
+    right: -35%;
+    width: 70%;
+    height: 140%;
+    background: radial-gradient(ellipse at center,
+      rgba(216, 154, 122, .28) 0%,
+      rgba(184, 92, 56, .14) 35%,
+      rgba(184, 92, 56, 0) 70%);
+    filter: blur(20px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .contact-final > *{ position: relative; z-index: 1; }
+  .contact-final__title{
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(28px, 2.8vw, 36px);
+    color: #F5EFE7;
+    line-height: 1.15;
+    margin-bottom: 12px;
+    letter-spacing: -.01em;
+  }
+  .contact-final__sub{
+    font-size: 15px;
+    color: rgba(245,239,231,.7);
+    line-height: 1.55;
+    margin: 0 0 28px;
+    max-width: 44ch;
+  }
+  .contact-final__cta{
+    display:flex; flex-direction: column; gap: 12px;
+    align-items: stretch;
+    max-width: 440px;
+  }
+  .contact-final__cta .btn{
+    justify-content: center;
+    padding: 16px 24px;
+    font-size: 15px;
+  }
+  .contact-final__cta .btn.ghost{
+    background: rgba(245,239,231,.06);
+    color: #F5EFE7;
+    box-shadow: none;
+    border: 1px solid rgba(245,239,231,.14);
+  }
+  .contact-final__cta .btn.ghost:hover{
+    background: rgba(245,239,231,.1);
+    box-shadow: none;
+  }
+  .contact-final__note{
+    margin-top: 28px;
+    font-size: 13px; color: rgba(245,239,231,.5);
+  }
+
+  /* CLOSING CARD (legacy, unused) */
+  .closing-card{
+    margin: 56px 0 0;
+    display:grid; grid-template-columns: 1.05fr 1fr;
+    background: var(--ink); color:#F5EFE7;
+    border-radius: 12px; overflow:hidden;
+    box-shadow: 0 40px 80px -40px rgba(40,25,15,.5);
+  }
+  .closing-card__head{
+    padding: 40px 40px 36px;
+    display:flex; flex-direction:column; align-items:flex-start; gap: 14px;
+    background: radial-gradient(120% 80% at 0% 0%, rgba(184,92,56,.18), transparent 60%), var(--ink);
+  }
+  .cc-eye{
+    font-size: 11px; letter-spacing: .26em; text-transform: uppercase;
+    color: var(--accent-soft); display:flex; align-items:center; gap:12px;
+  }
+  .cc-eye::before{ content:""; width:24px; height:1px; background: var(--accent-soft); }
+  .closing-card h3{
+    font-family:Georgia, 'Times New Roman', serif; font-size: clamp(26px, 2.8vw, 34px);
+    line-height: 1.1; color:#F5EFE7;
+  }
+  .cc-sub{ font-size: 14.5px; line-height: 1.55; color: rgba(245,239,231,.72); margin: 0 0 12px; max-width: 38ch; }
+  .closing-card .btn.primary{ box-shadow: 0 16px 32px -16px rgba(184,92,56,.7); }
+  .cc-note{ font-size: 12.5px; color: rgba(245,239,231,.5); margin-top:4px; max-width: 40ch; line-height:1.5; }
+  .closing-card__contacts{
+    display:flex; flex-direction:column;
+    background: rgba(255,255,255,.03);
+    border-left: 1px solid rgba(245,239,231,.08);
+  }
+  .cc-row{
+    display:grid; grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto; column-gap:16px; align-items:center;
+    padding: 22px 32px;
+    text-decoration:none; color:inherit;
+    border-bottom: 1px solid rgba(245,239,231,.08);
+    transition: background .25s ease;
+  }
+  .cc-row:last-child{ border-bottom:none; }
+  .cc-row:not(.static):hover{ background: rgba(245,239,231,.05); }
+  .cc-row:not(.static):hover .cc-arr{ transform: translate(2px,-2px); color: var(--accent-soft); }
+  .cc-row .lab{ grid-column:1; grid-row:1; font-size:11px; letter-spacing:.22em; text-transform:uppercase; color: rgba(245,239,231,.5); }
+  .cc-row .val{ grid-column:1; grid-row:2; font-family:Georgia, 'Times New Roman', serif; font-size: 18px; color:#F5EFE7; margin-top:4px; }
+  .cc-arr{ grid-column:2; grid-row:1/span 2; font-size:18px; color: rgba(245,239,231,.4); transition: transform .25s ease, color .25s ease; }
+
+  footer{
+    padding: 60px 0 56px;
+    color: var(--muted);
+    font-size: 12px; letter-spacing: .08em; text-align:center;
+  }
+  footer .heart{ color: var(--accent); }
+
+  .reveal{ opacity:0; transform: translateY(14px); transition: opacity .9s ease, transform .9s ease; }
+  .reveal.visible{ opacity:1; transform: none; }
+
+  /* responsive */
+  @media (max-width: 820px){
+    .wrap, .narrow{ padding: 0 24px; }
+    .hero{ padding: 32px 0 60px; }
+    .hero .grid{ grid-template-columns: 1fr; gap: 36px; }
+    .hero-photo{ aspect-ratio: 4/4.4; max-height: 540px; }
+    .members-mini{ grid-template-columns: 1fr; }
+    .figs{ grid-template-columns: 1fr 1fr; gap: 18px 22px; }
+    .docs-mini{ grid-template-columns: 1fr; gap: 0; }
+    .docs-mini .d{ border-top: none; border-left: none; padding: 10px 0; }
+    .docs-mini .d:nth-child(odd), .docs-mini .d:nth-child(even){ padding-left: 0; padding-right: 0; border-left: none; border-top: none; }
+    .closing-card{ grid-template-columns: 1fr; }
+    .closing-card__contacts{ border-left: none; border-top: 1px solid rgba(245,239,231,.08); }
+  }
+  @media (max-width: 560px){
+    body{ font-size: 16px; }
+    .wrap, .narrow{ padding: 0 24px; }
+    .top{ padding: 18px 24px; }
+    .hero{ padding: 40px 0 48px; }
+    .hero h1{ font-size: 34px; }
+    .hero .lede{ font-size: 16px; margin: 18px 0 26px; }
+    .eyebrow{ font-size: 11px; margin-bottom: 18px; }
+    .cta-row{ flex-direction: column; align-items: stretch; max-width: none; }
+    .btn{ justify-content: center; padding: 14px 20px; font-size: 14.5px; width: 100%; }
+    .text-block{ padding-top: 8px; padding-bottom: 20px; }
+    .text-block p{ font-size: 16.5px; line-height: 1.7; }
+    .text-photo, .text-photo--reverse{ grid-template-columns: 1fr; gap: 24px; margin: 28px 0; }
+    .text-photo--reverse .text-photo__text{ order: initial; }
+    .text-photo--reverse .text-photo__photo{ order: initial; }
+    .text-photo__photo{ max-width: 320px; margin: 0 auto; }
+    .highlight{ padding: 24px 22px 26px; border-radius: 18px; margin: 28px 0; }
+    .highlight h3{ font-size: 21px; margin-bottom: 22px; }
+    .figs{ grid-template-columns: 1fr 1fr; gap: 16px; }
+    .fig .fv{ font-size: 22px; }
+    .docs-cta__btn{ width: 100%; justify-content: center; }
+    .sig{ margin-top: 36px; padding-top: 26px; font-size: 19px; }
+    .contact-final{ margin-top: 44px; padding: 32px 24px 28px; border-radius: 18px; }
+    .contact-final__title{ font-size: 26px; }
+    .contact-final__sub{ font-size: 14.5px; margin-bottom: 22px; }
+    .contact-final__cta{ max-width: none; }
+    .contact-final__cta .btn{ padding: 14px 18px; font-size: 14.5px; }
+    .contact-final__note{ margin-top: 22px; font-size: 12.5px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top" style="display:none;">
+  <div class="mark"><span class="dot"></span> Familia Kaiumov</div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <div class="eyebrow">Familia Kaiumov — sus futuros inquilinos</div>
+        <h1>Una familia buscando<br><span class="it">un hogar</span> en España.</h1>
+        <p class="lede">Somos Rushan, Maryana, Pavel y Timur. Tranquilos, cuidadosos y aquí para quedarnos.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="https://drive.google.com/drive/folders/1jNWUQxifgnDt7y8SlF0dzlu5oZqtZ-j8" target="_blank" rel="noopener">
+            <span>Ver documentación</span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h8M7 3l4 4-4 4"/></svg>
+          </a>
+          <a class="btn ghost" href="https://wa.me/34666103968" target="_blank" rel="noopener">WhatsApp +34 666 10 39 68</a>
+        </div>
+      </div>
+      <div class="hero-photo reveal">
+        <img src="img/family-studio.jpg" alt="Familia Kaiumov" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEXT — оригинальный, разбавлен фото и highlight-блоками -->
+<section>
+  <div class="narrow text-block">
+
+    <p>Me llamo <strong>Rushan Kaiumov</strong>, tengo 37 años. Soy Senior Product Designer en Tabby, una empresa líder de tecnología financiera de la región MENA, con sede en Dubái. Trabajo en remoto, lo que significa que paso la mayor parte del tiempo en casa — tranquilo, concentrado, frente al ordenador.</p>
+
+    <p>A mi lado está mi familia. Mi esposa <strong>Maryana</strong> (35 años) es analista en una empresa farmacéutica, actualmente de baja por maternidad. Está aprendiendo español activamente y ya hace progresos notables — porque hemos venido aquí en serio y para quedarnos. Nuestro hijo mayor <strong>Pavel</strong> (9 años) es un niño curioso y activo: practica aikido, toca la batería y le apasionan las nuevas tecnologías. Sueña con ser músico o actor — y creemos que aquí, en España, sus talentos florecerán de verdad. El 20 de marzo nació nuestro hijo pequeño <strong>Timur</strong> — y esta mudanza no es para nosotros un simple cambio de dirección, sino el comienzo de un nuevo capítulo en nuestras vidas.</p>
+
+    <!-- Highlight: состав семьи -->
+    <div class="highlight">
+      <h3>Cuatro personas, un solo hogar.</h3>
+      <div class="members-mini">
+        <div class="mm">
+          <div class="av">R</div>
+          <div>
+            <div class="name">Rushan, 37</div>
+            <div class="role">Senior Product Designer · Tabby (remoto)</div>
+          </div>
+        </div>
+        <div class="mm">
+          <div class="av">M</div>
+          <div>
+            <div class="name">Maryana, 35</div>
+            <div class="role">Analista farmacéutica · baja por maternidad</div>
+          </div>
+        </div>
+        <div class="mm">
+          <div class="av">P</div>
+          <div>
+            <div class="name">Pavel, 9</div>
+            <div class="role">Aikido, batería, tecnología</div>
+          </div>
+        </div>
+        <div class="mm">
+          <div class="av">T</div>
+          <div>
+            <div class="name">Timur, recién nacido</div>
+            <div class="role">Nacido el 20 de marzo de 2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Two-column: текст слева (большая колонка), фото справа (меньшая) -->
+    <div class="text-photo">
+      <div class="text-photo__text">
+        <p>Hemos elegido España de forma consciente y con mucho cariño. Nos sentimos cercanos al carácter español — la apertura, el amor por la vida, la calidez en las relaciones entre las personas. Siempre hemos soñado con vivir junto al mar, en un clima cálido, y queremos que nuestros hijos crezcan bajo el sol, en un entorno sano y alegre. Queremos que Pavel estudie en una escuela española, hable varios idiomas y crezca como una persona independiente y libre. <em>No es un sueño — es nuestro plan.</em> En España ya tenemos amigos y conocidos que están listos para apoyarnos. Mi hermano mayor vive en los Países Bajos — Europa se está convirtiendo en nuestro verdadero hogar.</p>
+      </div>
+      <div class="text-photo__photo inline-photo reveal">
+        <img src="img/family-four.jpg" alt="Rushan y Maryana" />
+      </div>
+    </div>
+
+    <div class="text-photo text-photo--reverse">
+      <div class="text-photo__text">
+        <p>Somos una familia <strong>tranquila y cuidadosa</strong>. Sin malos hábitos, sin mascotas. Tengo formación como profesor de tecnología y artes plásticas — sé trabajar con las manos y resolver los problemas del hogar de forma autónoma, sin molestar a los propietarios por pequeñeces. Respetamos el silencio, nos gusta la limpieza, disfrutamos cocinando y valoramos el ambiente hogareño. La vivienda para nosotros no es un lugar de fiestas — es el lugar donde vivimos, trabajamos y criamos a nuestros hijos.</p>
+      </div>
+      <div class="text-photo__photo inline-photo reveal">
+        <img src="img/couple-white.jpg" alt="La familia en casa" />
+      </div>
+    </div>
+
+    <!-- Highlight: финансы -->
+    <div class="highlight">
+      <h3>Estabilidad financiera.</h3>
+      <div class="figs" style="grid-template-columns: 1fr 1fr; gap: 32px;">
+        <div class="fig">
+          <div class="fl">Salario</div>
+          <div class="fv">6 000 USD</div>
+          <div class="fs">/ mes</div>
+        </div>
+        <div class="fig">
+          <div class="fl">Empleador</div>
+          <div class="fv">Tabby</div>
+          <div class="fs">Fintech · Dubái · remoto</div>
+        </div>
+      </div>
+    </div>
+
+    <p>Mi retribución contractual es de <strong>6.000 USD al mes</strong>, y además el empleador cubre los compromisos fiscales — el coste total para la empresa asciende a unos <strong>7.200 USD mensuales</strong>. Los pagos son regulares y puntuales. Estoy dispuesto a aportar toda la documentación necesaria: contrato con el empleador, extractos bancarios, facturas de los últimos meses y confirmación oficial de la empresa — todo traducido al español y debidamente certificado. Estamos dispuestos a firmar un <strong>contrato de arrendamiento a largo plazo</strong> y a abonar una <strong>fianza equivalente a dos mensualidades</strong>.</p>
+
+    <!-- Highlight: документы + CTA объединены -->
+    <div class="highlight docs-cta">
+      <h3>Documentación lista, traducida y certificada.</h3>
+      <div class="docs-mini">
+        <div class="d"><div class="n">01</div><div class="t">Contrato laboral con Tabby</div></div>
+        <div class="d"><div class="n">02</div><div class="t">Extractos bancarios recientes</div></div>
+        <div class="d"><div class="n">03</div><div class="t">Nóminas y facturas</div></div>
+        <div class="d"><div class="n">04</div><div class="t">Confirmación oficial del empleador</div></div>
+        <div class="d"><div class="n">05</div><div class="t">Pasaportes de toda la familia</div></div>
+        <div class="d"><div class="n">06</div><div class="t">Referencias personales</div></div>
+      </div>
+      <a class="btn primary docs-cta__btn" href="https://drive.google.com/drive/folders/1jNWUQxifgnDt7y8SlF0dzlu5oZqtZ-j8" target="_blank" rel="noopener">
+        <span>Abrir carpeta de documentos</span>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h8M7 3l4 4-4 4"/></svg>
+      </a>
+    </div>
+
+    <p>En este momento nos comunicamos con fluidez en inglés. Maryana estudia español de forma activa. <strong>Actualmente ella y los niños se encuentran fuera de España</strong>, esperando a que finalice el proceso del permiso de residencia y se formalice el contrato de arrendamiento. En cuanto tengamos el hogar listo, toda la familia se reunirá de inmediato — esta es precisamente la razón por la que buscamos una vivienda estable y a largo plazo. Tenemos amigos en España y queremos integrarnos en la vida local desde el primer día.</p>
+
+    <div class="highlight" style="margin-top: 28px;">
+      <h3>Reunificación familiar pendiente.</h3>
+      <p style="margin: 0; color: var(--ink-soft); font-size: 16.5px; line-height: 1.7;">Maryana y los niños esperan fuera de España la formalización del contrato y el permiso de residencia. Por eso necesitamos un hogar estable y a largo plazo — para reunirnos cuanto antes.</p>
+    </div>
+
+    <p>No buscamos simplemente una vivienda. Buscamos un <em>hogar</em> — un lugar donde nuestros hijos darán sus primeros pasos en su nueva vida. Y nos haría muy felices que ese hogar fuera precisamente su piso.</p>
+
+    <div class="sig">
+      Con respeto y con la esperanza de conocerles pronto,<br>
+      Rushan & Maryana Kaiumov
+    </div>
+
+    <!-- CONTACT BLOCK — тёмный финал с двумя кнопками -->
+    <div class="contact-final">
+      <div class="contact-final__title">¿Nos conocemos?</div>
+      <p class="contact-final__sub">Escríbanos cuando quiera — respondemos rápido por WhatsApp o correo.</p>
+      <div class="contact-final__cta">
+        <a class="btn primary" href="https://wa.me/34666103968" target="_blank" rel="noopener">
+          <span>WhatsApp +34 666 10 39 68</span>
+        </a>
+        <a class="btn ghost" href="mailto:rushan.kaiumov@gmail.com">
+          <span>rushan.kaiumov@gmail.com</span>
+        </a>
+      </div>
+      <div class="contact-final__note">EN fluido · ES en curso — disponibles cualquier día.</div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  Hecho con <span class="heart">♥</span> por la familia Kaiumov
+</footer>
+
+<script>
+  const io = new IntersectionObserver((es)=>{
+    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target);} });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
